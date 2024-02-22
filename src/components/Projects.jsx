@@ -1,22 +1,27 @@
+import { motion, useTransform, useScroll } from "framer-motion";
+import { useRef } from "react";
 import "../styles/projects.css";
-import { motion, useScroll, useTransform } from "framer-motion";
 
-const Projects = () => {
+const HorizontalScrollCarousel = () => {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-85%"]);
+
   return (
-    <div className="projects">
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="project1"
-      >
-        <h1>Project 1</h1>
-      </motion.div>
-      <motion.div className="project2">
-        <h1>Project 2</h1>
-      </motion.div>
-    </div>
+    <section ref={targetRef} className="section-container">
+      <h1>Projects</h1>
+      <div className="sticky-container">
+        <motion.div style={{ x }} className="cards-container">
+          <div className="box">Project 1</div>
+          <div className="box">Project 2</div>
+          <div className="box">Project 3</div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
-export default Projects;
+export default HorizontalScrollCarousel;

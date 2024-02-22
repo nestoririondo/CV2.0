@@ -1,20 +1,29 @@
-.projects {
-  margin-top: 2700px;
-  height: 500vh;
-}
 
 .project1 {
-  height: 100vh;
-  background-color: #ffacac;
   display: flex;
-  justify-content: center;
-  align-items: center;
+}
+.box {
+  width: 80vh;
+  height: 80vh;
+  background-color: #f0f0f0;
 }
 
-.project2 {
-  height: 100vh;
-  background-color: #ffd97f;
+.section-container {
+  position: relative;
+  height: 500vh;
+  margin-top: 2700px;
+}
+
+.sticky-container {
+  position: sticky;
+  top: 0;
   display: flex;
-  justify-content: center;
+  height: 100vh;
   align-items: center;
+  overflow: hidden;
+}
+
+.cards-container {
+  display: flex;
+  gap: 1rem;
 }

@@ -10,13 +10,13 @@ const Hello = () => {
   const onTap = () => {
     controls
       .start({
-        scale: 1.2,
-        transition: { type: 'spring', stiffness: 300, damping: 60 },
+        scale: 1.5,
+        transition: { type: "spring", stiffness: 300, damping: 60 },
       })
       .then(() => {
         controls.start({
           scale: 1,
-          transition: { type: 'spring', stiffness: 2000, damping: 10 },
+          transition: { type: "spring", stiffness: 2000, damping: 10 },
         });
       });
   };
@@ -72,11 +72,9 @@ const Hello = () => {
         <h1>I'm a</h1>
         <div className="wrapper">
           <div className="words">
-            <h1>web</h1>
-            <h1>React</h1>
-            <h1>Node.js</h1>
-            <h1>full-stack</h1>
-            <h1>creative</h1>
+            {words.map((word) => (
+              <h1>{word}</h1>
+            ))}
           </div>
         </div>
         <h1>developer</h1>
@@ -84,5 +82,6 @@ const Hello = () => {
     </div>
   );
 };
+const words = ["web", "React", "Node.js", "full-stack", "creative"];
 
 export default Hello;
