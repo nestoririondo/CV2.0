@@ -1,14 +1,33 @@
 import React, { useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
 import "../styles/hello.css";
 import photo from "../../assets/photo2.jpg";
 
 const Hello = () => {
   const { scrollY } = useScroll();
+  const controls = useAnimation();
+
+  const onTap = () => {
+    controls
+      .start({
+        scale: 1.2,
+        transition: { type: 'spring', stiffness: 300, damping: 60 },
+      })
+      .then(() => {
+        controls.start({
+          scale: 1,
+          transition: { type: 'spring', stiffness: 2000, damping: 10 },
+        });
+      });
+  };
 
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
   const opacity2 = useTransform(scrollY, [500, 1000, 1200, 1700], [0, 1, 1, 0]);
-  const opacity3 = useTransform(scrollY, [1700, 2200, 2700], [0, 1, 0]);
+  const opacity3 = useTransform(
+    scrollY,
+    [1700, 2200, 2400, 2900],
+    [0, 1, 1, 0]
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,8 +59,9 @@ const Hello = () => {
         <h1>I'm Néstor</h1>
         <motion.img
           src={photo}
-          alt="Néstor"
-          whileTap={{ transform: "rotate(360deg)" }}
+          alt="This is me"
+          animate={controls}
+          onTap={onTap}
         />
       </motion.div>
       <motion.div
