@@ -1,3 +1,20 @@
 .projects {
+  margin-top: 2500px;
   height: 500vh;
+}
+
+.project1 {
+  height: 100vh;
+  background-color: #ffacac;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project2 {
+  height: 100vh;
+  background-color: #ffd97f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
